@@ -16,9 +16,12 @@ class HomeTableView: UITableView ,UITableViewDataSource ,UITableViewDelegate{
     override init(frame: CGRect, style: UITableViewStyle) {
         
         super.init(frame: frame, style: style)
+        
         self.delegate = self
         self.dataSource = self
-        self.tableHeaderView = UIView.init()
+        self.separatorStyle = UITableViewCellSeparatorStyle.none
+        
+        self.tableHeaderView = UIView.init(frame: CGRect.init(x: 0, y: 0, width: 0, height: 0.01))
         
     }
     
@@ -67,6 +70,7 @@ class HomeTableView: UITableView ,UITableViewDataSource ,UITableViewDelegate{
 class GoodsCell: UITableViewCell {
     var nameLab : IvyLabel!
     var logIV : UIImageView!
+    var line : CALayer!
     
     override init(style: UITableViewCellStyle, reuseIdentifier: String?) {
         
@@ -80,6 +84,13 @@ class GoodsCell: UITableViewCell {
         nameLab = IvyLabel.init(frame: CGRect.init(x: logIV.frame.origin.x + logIV.frame.size.width + 10, y: logIV.frame.origin.y, width: 200, height: 16), text: "商品名字", font: UIFont.systemFont(ofSize: 16), textColor: UIColor.gray, textAlignment: NSTextAlignment.left, numberLines: 0)
         addSubview(nameLab)
         
+        
+        line = CALayer();
+        line.backgroundColor = UIColor.gray.cgColor;
+        line.frame = CGRect.init(x: 0, y: 119.5, width: screenW, height: 0.5)
+        layer.addSublayer(line)
+        
+
     }
     
     required init?(coder aDecoder: NSCoder) {

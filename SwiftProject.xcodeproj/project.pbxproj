@@ -11,13 +11,14 @@
 		0412B9F11EC2FEE600152572 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0412B9EF1EC2FEE600152572 /* Main.storyboard */; };
 		0412B9F31EC2FEE700152572 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 0412B9F21EC2FEE700152572 /* Assets.xcassets */; };
 		0412B9F61EC2FEE700152572 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0412B9F41EC2FEE700152572 /* LaunchScreen.storyboard */; };
-		0412BA011EC2FFA500152572 /* SHTabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0412BA001EC2FFA500152572 /* SHTabBarController.swift */; };
-		0412BA051EC438A400152572 /* IvyLabel.m in Sources */ = {isa = PBXBuildFile; fileRef = 0412BA041EC438A400152572 /* IvyLabel.m */; };
-		0412BA0D1EC43B3500152572 /* StoreController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0412BA0C1EC43B3500152572 /* StoreController.swift */; };
-		0412BA101EC4463600152572 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0412BA0F1EC4463600152572 /* ViewController.swift */; };
-		0412BA131EC4465300152572 /* HomeTableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0412BA121EC4465300152572 /* HomeTableView.swift */; };
-		0412BA151EC4486E00152572 /* GoodsDetailController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0412BA141EC4486E00152572 /* GoodsDetailController.swift */; };
-		0412BA171EC44C8900152572 /* HeaderFile.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0412BA161EC44C8900152572 /* HeaderFile.swift */; };
+		0412BA1B1EC4585600152572 /* HeaderFile.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0412BA181EC4585600152572 /* HeaderFile.swift */; };
+		0412BA1C1EC4585600152572 /* SHTabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0412BA191EC4585600152572 /* SHTabBarController.swift */; };
+		0412BA201EC4586200152572 /* IvyLabel.m in Sources */ = {isa = PBXBuildFile; fileRef = 0412BA1F1EC4586200152572 /* IvyLabel.m */; };
+		0412BA221EC4586B00152572 /* StoreController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0412BA211EC4586B00152572 /* StoreController.swift */; };
+		0412BA261EC4587500152572 /* GoodsDetailController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0412BA231EC4587500152572 /* GoodsDetailController.swift */; };
+		0412BA271EC4587500152572 /* HomeTableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0412BA241EC4587500152572 /* HomeTableView.swift */; };
+		0412BA281EC4587500152572 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0412BA251EC4587500152572 /* ViewController.swift */; };
+		A1BCDCB3B1F7B1F78B6786F1 /* Pods_SwiftProject.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8FD71876198DF6B35CDDF674 /* Pods_SwiftProject.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -27,15 +28,18 @@
 		0412B9F21EC2FEE700152572 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		0412B9F51EC2FEE700152572 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		0412B9F71EC2FEE900152572 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		0412BA001EC2FFA500152572 /* SHTabBarController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SHTabBarController.swift; sourceTree = "<group>"; };
-		0412BA031EC438A400152572 /* IvyLabel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IvyLabel.h; sourceTree = "<group>"; };
-		0412BA041EC438A400152572 /* IvyLabel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IvyLabel.m; sourceTree = "<group>"; };
-		0412BA0C1EC43B3500152572 /* StoreController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StoreController.swift; sourceTree = "<group>"; };
-		0412BA0E1EC43F7600152572 /* swift-oc.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "swift-oc.h"; sourceTree = "<group>"; };
-		0412BA0F1EC4463600152572 /* ViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
-		0412BA121EC4465300152572 /* HomeTableView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HomeTableView.swift; sourceTree = "<group>"; };
-		0412BA141EC4486E00152572 /* GoodsDetailController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GoodsDetailController.swift; sourceTree = "<group>"; };
-		0412BA161EC44C8900152572 /* HeaderFile.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HeaderFile.swift; sourceTree = "<group>"; };
+		0412BA181EC4585600152572 /* HeaderFile.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = HeaderFile.swift; path = Common/HeaderFile.swift; sourceTree = "<group>"; };
+		0412BA191EC4585600152572 /* SHTabBarController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SHTabBarController.swift; path = Common/SHTabBarController.swift; sourceTree = "<group>"; };
+		0412BA1A1EC4585600152572 /* swift-oc.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "swift-oc.h"; path = "Common/swift-oc.h"; sourceTree = "<group>"; };
+		0412BA1E1EC4586200152572 /* IvyLabel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IvyLabel.h; sourceTree = "<group>"; };
+		0412BA1F1EC4586200152572 /* IvyLabel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IvyLabel.m; sourceTree = "<group>"; };
+		0412BA211EC4586B00152572 /* StoreController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = StoreController.swift; path = Section/store/StoreController.swift; sourceTree = "<group>"; };
+		0412BA231EC4587500152572 /* GoodsDetailController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = GoodsDetailController.swift; path = Section/home/GoodsDetailController.swift; sourceTree = "<group>"; };
+		0412BA241EC4587500152572 /* HomeTableView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = HomeTableView.swift; path = Section/home/HomeTableView.swift; sourceTree = "<group>"; };
+		0412BA251EC4587500152572 /* ViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ViewController.swift; path = Section/home/ViewController.swift; sourceTree = "<group>"; };
+		171CB6319D1D3E9E0FFB4489 /* Pods-SwiftProject.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SwiftProject.release.xcconfig"; path = "Pods/Target Support Files/Pods-SwiftProject/Pods-SwiftProject.release.xcconfig"; sourceTree = "<group>"; };
+		8FD71876198DF6B35CDDF674 /* Pods_SwiftProject.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_SwiftProject.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		A7D6F020BC156439FF2286DE /* Pods-SwiftProject.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SwiftProject.debug.xcconfig"; path = "Pods/Target Support Files/Pods-SwiftProject/Pods-SwiftProject.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -43,6 +47,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A1BCDCB3B1F7B1F78B6786F1 /* Pods_SwiftProject.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -54,6 +59,8 @@
 			children = (
 				0412B9EA1EC2FEE400152572 /* SwiftProject */,
 				0412B9E91EC2FEE300152572 /* Products */,
+				22E73C0027D6744009420C24 /* Pods */,
+				DC00375094D320ED8BBF512F /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -92,7 +99,7 @@
 		0412B9FE1EC2FF1800152572 /* Extension */ = {
 			isa = PBXGroup;
 			children = (
-				0412BA021EC438A400152572 /* IvyLabel */,
+				0412BA1D1EC4586200152572 /* IvyLabel */,
 			);
 			name = Extension;
 			sourceTree = "<group>";
@@ -100,20 +107,11 @@
 		0412B9FF1EC2FF3800152572 /* Common */ = {
 			isa = PBXGroup;
 			children = (
-				0412BA001EC2FFA500152572 /* SHTabBarController.swift */,
-				0412BA0E1EC43F7600152572 /* swift-oc.h */,
-				0412BA161EC44C8900152572 /* HeaderFile.swift */,
+				0412BA181EC4585600152572 /* HeaderFile.swift */,
+				0412BA191EC4585600152572 /* SHTabBarController.swift */,
+				0412BA1A1EC4585600152572 /* swift-oc.h */,
 			);
 			name = Common;
-			sourceTree = "<group>";
-		};
-		0412BA021EC438A400152572 /* IvyLabel */ = {
-			isa = PBXGroup;
-			children = (
-				0412BA031EC438A400152572 /* IvyLabel.h */,
-				0412BA041EC438A400152572 /* IvyLabel.m */,
-			);
-			path = IvyLabel;
 			sourceTree = "<group>";
 		};
 		0412BA061EC43ADE00152572 /* home */ = {
@@ -129,7 +127,7 @@
 		0412BA091EC43AFC00152572 /* store */ = {
 			isa = PBXGroup;
 			children = (
-				0412BA0C1EC43B3500152572 /* StoreController.swift */,
+				0412BA211EC4586B00152572 /* StoreController.swift */,
 			);
 			name = store;
 			sourceTree = "<group>";
@@ -137,7 +135,9 @@
 		0412BA0A1EC43B0800152572 /* VC */ = {
 			isa = PBXGroup;
 			children = (
-				0412BA0F1EC4463600152572 /* ViewController.swift */,
+				0412BA231EC4587500152572 /* GoodsDetailController.swift */,
+				0412BA241EC4587500152572 /* HomeTableView.swift */,
+				0412BA251EC4587500152572 /* ViewController.swift */,
 			);
 			name = VC;
 			sourceTree = "<group>";
@@ -152,10 +152,35 @@
 		0412BA111EC4463D00152572 /* View */ = {
 			isa = PBXGroup;
 			children = (
-				0412BA121EC4465300152572 /* HomeTableView.swift */,
-				0412BA141EC4486E00152572 /* GoodsDetailController.swift */,
 			);
 			name = View;
+			sourceTree = "<group>";
+		};
+		0412BA1D1EC4586200152572 /* IvyLabel */ = {
+			isa = PBXGroup;
+			children = (
+				0412BA1E1EC4586200152572 /* IvyLabel.h */,
+				0412BA1F1EC4586200152572 /* IvyLabel.m */,
+			);
+			name = IvyLabel;
+			path = Extension/IvyLabel;
+			sourceTree = "<group>";
+		};
+		22E73C0027D6744009420C24 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				A7D6F020BC156439FF2286DE /* Pods-SwiftProject.debug.xcconfig */,
+				171CB6319D1D3E9E0FFB4489 /* Pods-SwiftProject.release.xcconfig */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
+		DC00375094D320ED8BBF512F /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				8FD71876198DF6B35CDDF674 /* Pods_SwiftProject.framework */,
+			);
+			name = Frameworks;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -165,9 +190,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 0412B9FA1EC2FEE900152572 /* Build configuration list for PBXNativeTarget "SwiftProject" */;
 			buildPhases = (
+				523B5930DF5361218BF3686E /* [CP] Check Pods Manifest.lock */,
 				0412B9E41EC2FEE300152572 /* Sources */,
 				0412B9E51EC2FEE300152572 /* Frameworks */,
 				0412B9E61EC2FEE300152572 /* Resources */,
+				EE8376C8F0B4092B095DDA01 /* [CP] Embed Pods Frameworks */,
+				D6D880279319038976B35281 /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -225,19 +253,67 @@
 		};
 /* End PBXResourcesBuildPhase section */
 
+/* Begin PBXShellScriptBuildPhase section */
+		523B5930DF5361218BF3686E /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+		D6D880279319038976B35281 /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-SwiftProject/Pods-SwiftProject-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		EE8376C8F0B4092B095DDA01 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-SwiftProject/Pods-SwiftProject-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
 /* Begin PBXSourcesBuildPhase section */
 		0412B9E41EC2FEE300152572 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				0412BA131EC4465300152572 /* HomeTableView.swift in Sources */,
-				0412BA101EC4463600152572 /* ViewController.swift in Sources */,
-				0412BA051EC438A400152572 /* IvyLabel.m in Sources */,
+				0412BA271EC4587500152572 /* HomeTableView.swift in Sources */,
+				0412BA1B1EC4585600152572 /* HeaderFile.swift in Sources */,
+				0412BA201EC4586200152572 /* IvyLabel.m in Sources */,
 				0412B9EC1EC2FEE400152572 /* AppDelegate.swift in Sources */,
-				0412BA171EC44C8900152572 /* HeaderFile.swift in Sources */,
-				0412BA011EC2FFA500152572 /* SHTabBarController.swift in Sources */,
-				0412BA0D1EC43B3500152572 /* StoreController.swift in Sources */,
-				0412BA151EC4486E00152572 /* GoodsDetailController.swift in Sources */,
+				0412BA261EC4587500152572 /* GoodsDetailController.swift in Sources */,
+				0412BA1C1EC4585600152572 /* SHTabBarController.swift in Sources */,
+				0412BA281EC4587500152572 /* ViewController.swift in Sources */,
+				0412BA221EC4586B00152572 /* StoreController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -356,26 +432,28 @@
 		};
 		0412B9FB1EC2FEE900152572 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = A7D6F020BC156439FF2286DE /* Pods-SwiftProject.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				INFOPLIST_FILE = SwiftProject/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = yizhenjia.com.SwiftProject;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_OBJC_BRIDGING_HEADER = "SwiftProject/swift-oc.h";
+				SWIFT_OBJC_BRIDGING_HEADER = "SwiftProject/Common/swift-oc.h";
 				SWIFT_VERSION = 3.0;
 			};
 			name = Debug;
 		};
 		0412B9FC1EC2FEE900152572 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 171CB6319D1D3E9E0FFB4489 /* Pods-SwiftProject.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				INFOPLIST_FILE = SwiftProject/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = yizhenjia.com.SwiftProject;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_OBJC_BRIDGING_HEADER = "SwiftProject/swift-oc.h";
+				SWIFT_OBJC_BRIDGING_HEADER = "SwiftProject/Common/swift-oc.h";
 				SWIFT_VERSION = 3.0;
 			};
 			name = Release;
@@ -399,6 +477,7 @@
 				0412B9FC1EC2FEE900152572 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
