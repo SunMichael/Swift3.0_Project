@@ -40,7 +40,7 @@ class HomeTableView: UITableView ,UITableViewDataSource ,UITableViewDelegate{
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let string = "cell"
         let cell : GoodsCell = tableView.dequeueReusableCell(withIdentifier: string) as! GoodsCell
-        cell.loadCellWithModel(model: self.allGoods?.object(at: indexPath.row) as! ServiceModel)
+//        cell.loadCellWithModel(model: self.allGoods?.object(at: indexPath.row) as! ServiceModel)
         return cell
     }
     
@@ -66,13 +66,13 @@ class HomeTableView: UITableView ,UITableViewDataSource ,UITableViewDelegate{
         request.httpMethod = .post
         request.bodyParamters = ["city" : "hangzhou","lng" : "30.278554", "lat" : "120.115817"]
         request.startRequestWithHandle(success: { (response, error) in
-            let obj = response?.result as! NSArray
-            
-            for i in 0 ..< obj.count {
-                let dic = obj[i] as! NSDictionary
-                let model :ServiceModel = ServiceModel.deserialize(from: dic)!
-                self.allGoods?.add(model)
-            }
+//            let obj = (response? as AnyObject).result as! NSArray
+//            
+//            for i in 0 ..< obj.count {
+//                let dic = obj[i] as! NSDictionary
+//                let model :ServiceModel = ServiceModel.deserialize(from: dic)!
+//                self.allGoods?.add(model)
+//            }
             self .reloadData()
             
         }) { (error) in
@@ -114,10 +114,10 @@ class GoodsCell: UITableViewCell {
         fatalError("init(coder:) has not been implemented")
     }
     
-    public func loadCellWithModel(model : ServiceModel) -> Void {
-        nameLab.text = model.name;
-        
-    }
+//    public func loadCellWithModel(model : ServiceModel) -> Void {
+//        nameLab.text = model.name;
+//        
+//    }
     
 }
 

@@ -11,17 +11,17 @@ import Alamofire
 import SwiftyJSON
 
 
-typealias successBlock = (RequestResponse? , Error?) -> Void
+typealias successBlock = (Any? , Error?) -> Void
 typealias failBlock = (Error?) -> Void
 
-class RequestResponse : HandyJSON {
-    var code : NSInteger = 200
-    var errorMsg : String? = nil
-    var result : Any?
-    
-    required init() {}
-    
-}
+//class RequestResponse : HandyJSON {
+//    var code : NSInteger = 200
+//    var errorMsg : String? = nil
+//    var result : Any?
+//    
+//    required init() {}
+//    
+//}
 
 class SWRequest: NSObject {
     
@@ -54,9 +54,9 @@ class SWRequest: NSObject {
             print(response)
             if response.result.isSuccess {
                 let json = JSON.init(data: response.data!, options: JSONSerialization.ReadingOptions.mutableContainers, error: nil)
-                let object = RequestResponse.deserialize(from: json.string)
+//                let object = RequestResponse.deserialize(from: json.string)
 
-                success( object, response.error)
+//                success( object, response.error)
             }else{
                 fail(response.error)
             }

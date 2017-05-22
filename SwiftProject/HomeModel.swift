@@ -8,10 +8,10 @@
 
 import Foundation
 
-class ServiceModel: HandyJSON {
-    var id : String?
-    var name : String?
-    required init() {
-        
-    }
-}
+//class ServiceModel: HandyJSON {
+//    var id : String?
+//    var name : String?
+//    required init() {
+//        
+//    }
+//}

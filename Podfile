@@ -7,5 +7,5 @@ target 'SwiftProject' do
     pod 'SwiftyJSON'
     pod 'Kingfisher', '~> 3.0'
     pod 'MBProgressHUD', '~> 1.0.0'
-    pod 'HandyJSON'
+   
 end
