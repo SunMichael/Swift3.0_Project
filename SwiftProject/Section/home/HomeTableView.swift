@@ -7,27 +7,29 @@
 //
 
 import UIKit
-
+import Alamofire
 
 
 class HomeTableView: UITableView ,UITableViewDataSource ,UITableViewDelegate{
     
+    var allGoods : NSMutableArray?
     
     override init(frame: CGRect, style: UITableViewStyle) {
         
         super.init(frame: frame, style: style)
-        
+
         self.delegate = self
         self.dataSource = self
         self.separatorStyle = UITableViewCellSeparatorStyle.none
         
         self.tableHeaderView = UIView.init(frame: CGRect.init(x: 0, y: 0, width: 0, height: 0.01))
-        
+        self.requestForGoodsList()
     }
     
     required init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
+    
     
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -56,11 +58,21 @@ class HomeTableView: UITableView ,UITableViewDataSource ,UITableViewDelegate{
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return 80
+        return 120
     }
 
     func requestForGoodsList() -> Void {
-        
+
+        let request = SWRequest()
+        request.apiPath = "service/homeYuesaoList";
+        request.httpMethod = .post
+        request.bodyParamters = ["city" : "hangzhou","lng" : "30.278554", "lat" : "120.115817"]
+        request.startRequestWithHandle(success: { (json, error) in
+            let ary = json?.dictionary
+            
+        }) { (error) in
+            
+        }
     }
     
     
