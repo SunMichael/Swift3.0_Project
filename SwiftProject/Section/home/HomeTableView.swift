@@ -8,7 +8,7 @@
 
 import UIKit
 import Alamofire
-
+import MBProgressHUD
 
 class HomeTableView: UITableView ,UITableViewDataSource ,UITableViewDelegate{
     
@@ -18,6 +18,7 @@ class HomeTableView: UITableView ,UITableViewDataSource ,UITableViewDelegate{
         
         super.init(frame: frame, style: style)
 
+        self.allGoods = NSMutableArray.init()
         self.delegate = self
         self.dataSource = self
         self.separatorStyle = UITableViewCellSeparatorStyle.none
@@ -38,12 +39,9 @@ class HomeTableView: UITableView ,UITableViewDataSource ,UITableViewDelegate{
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let string = "cell"
-        var cell = tableView.dequeueReusableCell(withIdentifier: string)
-        if (cell == nil) {
-            cell = GoodsCell.init(style: UITableViewCellStyle.default, reuseIdentifier: string)
-        }
-        
-        return cell!
+        let cell : GoodsCell = tableView.dequeueReusableCell(withIdentifier: string) as! GoodsCell
+        cell.loadCellWithModel(model: self.allGoods?.object(at: indexPath.row) as! ServiceModel)
+        return cell
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
@@ -67,11 +65,18 @@ class HomeTableView: UITableView ,UITableViewDataSource ,UITableViewDelegate{
         request.apiPath = "service/homeYuesaoList";
         request.httpMethod = .post
         request.bodyParamters = ["city" : "hangzhou","lng" : "30.278554", "lat" : "120.115817"]
-        request.startRequestWithHandle(success: { (json, error) in
-            let ary = json?.dictionary
+        request.startRequestWithHandle(success: { (response, error) in
+            let obj = response?.result as! NSArray
+            
+            for i in 0 ..< obj.count {
+                let dic = obj[i] as! NSDictionary
+                let model :ServiceModel = ServiceModel.deserialize(from: dic)!
+                self.allGoods?.add(model)
+            }
+            self .reloadData()
             
         }) { (error) in
-            
+
         }
     }
     
@@ -107,6 +112,11 @@ class GoodsCell: UITableViewCell {
     
     required init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
+    }
+    
+    public func loadCellWithModel(model : ServiceModel) -> Void {
+        nameLab.text = model.name;
+        
     }
     
 }

@@ -9,25 +9,20 @@
 import Foundation
 import Alamofire
 import SwiftyJSON
-import HandyJSON
 
-typealias successBlock = (JSON? , Error?) -> Void
+
+typealias successBlock = (RequestResponse? , Error?) -> Void
 typealias failBlock = (Error?) -> Void
 
-class RequestResponse : NSObject ,HandyJSON {
+class RequestResponse : HandyJSON {
     var code : NSInteger = 200
     var errorMsg : String? = nil
-    var result : Dictionary? = [:]
-    required override init() {}
-    
-}
-class BasicTypes: HandyJSON {
-    var int: Int = 2
-    var doubleOptional: Double?
-    var stringImplicitlyUnwrapped: String!
+    var result : Any?
     
     required init() {}
+    
 }
+
 class SWRequest: NSObject {
     
     var apiPath : String? = nil
@@ -59,10 +54,9 @@ class SWRequest: NSObject {
             print(response)
             if response.result.isSuccess {
                 let json = JSON.init(data: response.data!, options: JSONSerialization.ReadingOptions.mutableContainers, error: nil)
-                let jsonString = "{\"id\":\"77544\",\"json_name\":\"Tom Li\",\"age\":18,\"grade\":2,\"height\":180,\"gender\":\"Female\",\"className\":\"A\",\"teacher\":{\"name\":\"Lucy He\",\"age\":28,\"height\":172,\"gender\":\"Female\",},\"subjects\":[{\"name\":\"math\",\"id\":18000324583,\"credit\":4,\"lessonPeriod\":48},{\"name\":\"computer\",\"id\":18000324584,\"credit\":8,\"lessonPeriod\":64}],\"seat\":\"4-3-23\"}"
-                let object = BasicTypes.deserialize(from: jsonString)
-                
-                success( json, response.error)
+                let object = RequestResponse.deserialize(from: json.string)
+
+                success( object, response.error)
             }else{
                 fail(response.error)
             }
