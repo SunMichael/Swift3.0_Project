@@ -27,7 +27,7 @@ class HomeTableView: UITableView ,UITableViewDataSource ,UITableViewDelegate{
         self.separatorStyle = UITableViewCellSeparatorStyle.none
         
         self.tableHeaderView = UIView.init(frame: CGRect.init(x: 0, y: 0, width: 0, height: 0.01))
-        self.requestForGoodsList()
+
     }
     
     required init?(coder aDecoder: NSCoder) {
@@ -67,14 +67,14 @@ class HomeTableView: UITableView ,UITableViewDataSource ,UITableViewDelegate{
     }
 
     func requestForGoodsList() -> Void {
-
+        LoadingAnimation.show()
         let request = SWRequest()
         request.apiPath = "service/homeYuesaoList";
         request.httpMethod = .post
         request.bodyParamters = ["city" : "hangzhou","lng" : "30.278554", "lat" : "120.115817"]
         request.startRequestWithHandle(success: { (response, error) in
+//            LoadingAnimation.dismiss()
             let obj = response?.result as! NSArray
-            
             for i in 0 ..< obj.count {
                 let dic = obj[i] as! NSDictionary
                 let model :ServiceModel = ServiceModel.deserialize(from: dic)!

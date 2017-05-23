@@ -47,6 +47,8 @@
 		04CFFDF21ED3CD030056BF77 /* SWRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04CFFDF11ED3CD030056BF77 /* SWRequest.swift */; };
 		04CFFDF41ED3CD100056BF77 /* HomeModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04CFFDF31ED3CD100056BF77 /* HomeModel.swift */; };
 		04CFFDF71ED3CD320056BF77 /* UserController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04CFFDF61ED3CD320056BF77 /* UserController.swift */; };
+		04CFFDF91ED3D6250056BF77 /* UserTableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04CFFDF81ED3D6250056BF77 /* UserTableView.swift */; };
+		04CFFDFB1ED3DA920056BF77 /* LoadingAnimation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04CFFDFA1ED3DA920056BF77 /* LoadingAnimation.swift */; };
 		A1BCDCB3B1F7B1F78B6786F1 /* Pods_SwiftProject.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8FD71876198DF6B35CDDF674 /* Pods_SwiftProject.framework */; };
 /* End PBXBuildFile section */
 
@@ -97,6 +99,8 @@
 		04CFFDF11ED3CD030056BF77 /* SWRequest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SWRequest.swift; path = Common/SWRequest.swift; sourceTree = "<group>"; };
 		04CFFDF31ED3CD100056BF77 /* HomeModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = HomeModel.swift; path = Section/home/HomeModel.swift; sourceTree = "<group>"; };
 		04CFFDF61ED3CD320056BF77 /* UserController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserController.swift; sourceTree = "<group>"; };
+		04CFFDF81ED3D6250056BF77 /* UserTableView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserTableView.swift; sourceTree = "<group>"; };
+		04CFFDFA1ED3DA920056BF77 /* LoadingAnimation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoadingAnimation.swift; sourceTree = "<group>"; };
 		171CB6319D1D3E9E0FFB4489 /* Pods-SwiftProject.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SwiftProject.release.xcconfig"; path = "Pods/Target Support Files/Pods-SwiftProject/Pods-SwiftProject.release.xcconfig"; sourceTree = "<group>"; };
 		8FD71876198DF6B35CDDF674 /* Pods_SwiftProject.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_SwiftProject.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		A7D6F020BC156439FF2286DE /* Pods-SwiftProject.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SwiftProject.debug.xcconfig"; path = "Pods/Target Support Files/Pods-SwiftProject/Pods-SwiftProject.debug.xcconfig"; sourceTree = "<group>"; };
@@ -172,6 +176,7 @@
 				0412BA181EC4585600152572 /* HeaderFile.swift */,
 				0412BA191EC4585600152572 /* SHTabBarController.swift */,
 				0412BA1A1EC4585600152572 /* swift-oc.h */,
+				04CFFDFA1ED3DA920056BF77 /* LoadingAnimation.swift */,
 			);
 			name = Common;
 			sourceTree = "<group>";
@@ -270,6 +275,7 @@
 			isa = PBXGroup;
 			children = (
 				04CFFDF61ED3CD320056BF77 /* UserController.swift */,
+				04CFFDF81ED3D6250056BF77 /* UserTableView.swift */,
 			);
 			name = user;
 			path = Section/user;
@@ -439,6 +445,7 @@
 				04CFFDF01ED2F1260056BF77 /* URLTransform.swift in Sources */,
 				0412BA1C1EC4585600152572 /* SHTabBarController.swift in Sources */,
 				04CFFDD41ED2F1260056BF77 /* Configuration.swift in Sources */,
+				04CFFDFB1ED3DA920056BF77 /* LoadingAnimation.swift in Sources */,
 				04CFFDF71ED3CD320056BF77 /* UserController.swift in Sources */,
 				04CFFDDA1ED2F1260056BF77 /* EnumTransform.swift in Sources */,
 				048559361ED2D320006960E1 /* ServiceModel.m in Sources */,
@@ -448,6 +455,7 @@
 				04CFFDE11ED2F1260056BF77 /* ISO8601DateTransform.swift in Sources */,
 				04CFFDD31ED2F1260056BF77 /* AnyExtensions.swift in Sources */,
 				04CFFDD61ED2F1260056BF77 /* DataTransform.swift in Sources */,
+				04CFFDF91ED3D6250056BF77 /* UserTableView.swift in Sources */,
 				04CFFDD91ED2F1260056BF77 /* Deserializer.swift in Sources */,
 				04CFFDF21ED3CD030056BF77 /* SWRequest.swift in Sources */,
 				0412BA221EC4586B00152572 /* StoreController.swift in Sources */,

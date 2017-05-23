@@ -17,6 +17,8 @@ class SHTabBarController: UITabBarController {
     let homeNC : UINavigationController!
     let storeNC : UINavigationController!
     let titlesAry : NSArray
+    var allImgs : NSMutableArray
+    var lastImg : UIImageView? = nil
     
     init() {
         let homeVc = HomeController()
@@ -26,6 +28,7 @@ class SHTabBarController: UITabBarController {
         self.storeNC = UINavigationController.init(rootViewController: storeVc)
         
         titlesAry = NSArray.init(array: ["首页","商城", "我的"])
+        allImgs = NSMutableArray()
         super.init(nibName: nil, bundle: nil)
     }
     
@@ -65,7 +68,9 @@ class SHTabBarController: UITabBarController {
             
             if i == 0 {
                 imageV.isHighlighted = true
+                lastImg = imageV
             }
+            allImgs.add(imageV)
             
             let lab = UILabel.init(frame: CGRect.init(x: btn.frame.origin.x, y: imageV.frame.origin.y + imageV.frame.size.height + CGFloat(8.0), width: maxw, height: 14))
             lab.font = UIFont.systemFont(ofSize: 14)
@@ -80,6 +85,11 @@ class SHTabBarController: UITabBarController {
     
     
     func clickedIndex(sender: UIButton) -> Void {
+        
+        let selectedImg = allImgs.object(at: sender.tag) as! UIImageView
+        selectedImg.isHighlighted = true
+        lastImg?.isHighlighted = false
+        lastImg = selectedImg
         
         self.selectedViewController = viewControllers?[sender.tag]
         navigationItem.title = String(describing: (self.titlesAry.object(at: sender.tag)))

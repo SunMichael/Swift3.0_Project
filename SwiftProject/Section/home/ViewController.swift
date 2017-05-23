@@ -17,6 +17,7 @@ class HomeController: UIViewController {
         
         
        let table = HomeTableView.init(frame: CGRect.init(x: 0, y: 0, width: screenW, height: screenH - CGFloat(footH) ), style: UITableViewStyle.grouped)
+        table.requestForGoodsList()
         view.addSubview(table)
         
     }

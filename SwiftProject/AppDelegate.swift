@@ -34,7 +34,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         let manager = NetworkReachabilityManager.init(host: "www.baidu.com")
         manager?.listener = { status in
             
-            if (status == NetworkReachabilityManager.NetworkReachabilityStatus.unknown) {
+            if (status == NetworkReachabilityManager.NetworkReachabilityStatus.notReachable) {
                 let tip = UIAlertController.init(title: "温馨提示", message: "当前无网络", preferredStyle: UIAlertControllerStyle.alert)
                 tip.addAction(UIAlertAction.init(title: "确定", style: UIAlertActionStyle.cancel, handler: { (sender) in
                     
@@ -42,9 +42,12 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
                 ROOTCONTROLLER .present(tip, animated: true, completion: { 
                     
                 })
+            }else if (status == NetworkReachabilityManager.NetworkReachabilityStatus.reachable(.ethernetOrWiFi)){
+                print(" wifi ")
             }
             
         }
+        manager?.startListening()
     }
     
 
