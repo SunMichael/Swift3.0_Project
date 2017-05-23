@@ -11,6 +11,8 @@ import Foundation
 class ServiceModel: HandyJSON {
     var id : String?
     var name : String?
+    var icon : String?
+    var price : String?
     required init() {
         
     }

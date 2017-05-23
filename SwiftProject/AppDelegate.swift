@@ -20,7 +20,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
         let tabbar = SHTabBarController.init()
         let nvgation = UINavigationController.init(rootViewController: tabbar)
-        
+        let backItem = UIBarButtonItem.init(title: "返回", style: UIBarButtonItemStyle.plain, target: self, action: nil)
+        tabbar.navigationItem.backBarButtonItem = backItem
         window?.rootViewController = nvgation
         
         addNetworkStatusObserve()
@@ -33,15 +34,15 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         let manager = NetworkReachabilityManager.init(host: "www.baidu.com")
         manager?.listener = { status in
             
-//            if status == NetworkReachabilityManager.ConnectionType.ethernetOrWiFi) {
-//                let tip = UIAlertController.init(title: "温馨提示", message: "当前无网络", preferredStyle: UIAlertControllerStyle.alert)
-//                tip.addAction(UIAlertAction.init(title: "确定", style: UIAlertActionStyle.cancel, handler: { (sender) in
-//                    
-//                }))
-//                ROOTCONTROLLER .present(tip, animated: true, completion: { 
-//                    
-//                })
-//            }
+            if (status == NetworkReachabilityManager.NetworkReachabilityStatus.unknown) {
+                let tip = UIAlertController.init(title: "温馨提示", message: "当前无网络", preferredStyle: UIAlertControllerStyle.alert)
+                tip.addAction(UIAlertAction.init(title: "确定", style: UIAlertActionStyle.cancel, handler: { (sender) in
+                    
+                }))
+                ROOTCONTROLLER .present(tip, animated: true, completion: { 
+                    
+                })
+            }
             
         }
     }

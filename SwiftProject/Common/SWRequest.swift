@@ -53,10 +53,9 @@ class SWRequest: NSObject {
         Alamofire.request(self.requestUrl, method: self.httpMethod, parameters: self.bodyParamters, encoding: self.encoding, headers: nil).responseJSON { response in
             print(response)
             if response.result.isSuccess {
-                let json = JSON.init(data: response.data!, options: JSONSerialization.ReadingOptions.mutableContainers, error: nil)
-                let object = RequestResponse.deserialize(from: json.string)
-
-                success( object, response.error)
+                let json = try! JSONSerialization.jsonObject(with: response.data!, options: JSONSerialization.ReadingOptions.mutableContainers) as! NSDictionary
+                let object = RequestResponse.deserialize(from: json)
+                success(object, response.error)
             }else{
                 fail(response.error)
             }

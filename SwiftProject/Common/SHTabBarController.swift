@@ -25,7 +25,7 @@ class SHTabBarController: UITabBarController {
         let storeVc = StoreController()
         self.storeNC = UINavigationController.init(rootViewController: storeVc)
         
-        titlesAry = NSArray.init(array: ["首页","商城"])
+        titlesAry = NSArray.init(array: ["首页","商城", "我的"])
         super.init(nibName: nil, bundle: nil)
     }
     
@@ -35,15 +35,15 @@ class SHTabBarController: UITabBarController {
     
     override func viewDidLoad() {
         
-        self.viewControllers = [HomeController() , StoreController()]
+        self.viewControllers = [HomeController() , StoreController(), UserController()]
         self.setBaseViews()
         self.navigationItem.title = "首页";
         view.backgroundColor = UIColor.white
     }
     
     func setBaseViews() -> Void {
-        let imagesAry = [UIImage.init(named: "home_nor"), UIImage.init(named: "mall1")]
-        let imagesAryH = [UIImage.init(named: "home_sel"), UIImage.init(named: "mall2")]
+        let imagesAry = [UIImage.init(named: "home_nor"), UIImage.init(named: "mall1"),UIImage.init(named: "me_nor")]
+        let imagesAryH = [UIImage.init(named: "home_sel"), UIImage.init(named: "mall2"), UIImage.init(named: "me_sel")]
         
         
         let contentView = UIView.init(frame: CGRect.init(x: 0.0, y: screenH - CGFloat(footH), width: screenW, height: screenH))
