@@ -18,14 +18,19 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
 
+        window = UIWindow.init()
+        self.window?.frame = UIScreen.main.bounds;
+        window?.backgroundColor = UIColor.white
+        window?.makeKeyAndVisible()
         let tabbar = SHTabBarController.init()
         let nvgation = UINavigationController.init(rootViewController: tabbar)
         let backItem = UIBarButtonItem.init(title: "返回", style: UIBarButtonItemStyle.plain, target: self, action: nil)
         tabbar.navigationItem.backBarButtonItem = backItem
         window?.rootViewController = nvgation
         
-        addNetworkStatusObserve()
         
+        addNetworkStatusObserve()
+        print("  11111")
         return true
     }
     

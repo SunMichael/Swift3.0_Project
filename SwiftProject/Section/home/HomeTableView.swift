@@ -73,7 +73,7 @@ class HomeTableView: UITableView ,UITableViewDataSource ,UITableViewDelegate{
         request.httpMethod = .post
         request.bodyParamters = ["city" : "hangzhou","lng" : "30.278554", "lat" : "120.115817"]
         request.startRequestWithHandle(success: { (response, error) in
-//            LoadingAnimation.dismiss()
+            LoadingAnimation.dismiss()
             let obj = response?.result as! NSArray
             for i in 0 ..< obj.count {
                 let dic = obj[i] as! NSDictionary
@@ -114,7 +114,7 @@ class GoodsCell: UITableViewCell {
         
         
         line = CALayer();
-        line.backgroundColor = UIColor.gray.cgColor;
+        line.backgroundColor = lineColor().cgColor;
         line.frame = CGRect.init(x: 0, y: cellH - 0.5, width: screenW, height: 0.5)
         layer.addSublayer(line)
         

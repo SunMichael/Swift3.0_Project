@@ -36,3 +36,11 @@ func getMaxY (obj: UIView) -> CGFloat {
 func getMaxX (obj: UIView) -> CGFloat {
     return obj.frame.size.width + obj.frame.origin.x
 }
+
+func getImage (obj: String) -> UIImage {
+    return UIImage.init(named: obj)!
+}
+
+func lineColor() -> UIColor{
+    return UIColor.init(colorLiteralRed: 240.0/255.0, green: 240.0/255.0, blue: 240.0/255.0, alpha: 1.0)
+}

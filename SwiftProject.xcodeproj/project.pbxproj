@@ -333,6 +333,7 @@
 				TargetAttributes = {
 					0412B9E71EC2FEE300152572 = {
 						CreatedOnToolsVersion = 8.2.1;
+						DevelopmentTeam = C8G87XC4N7;
 						ProvisioningStyle = Automatic;
 					};
 				};
@@ -581,6 +582,7 @@
 			baseConfigurationReference = A7D6F020BC156439FF2286DE /* Pods-SwiftProject.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				DEVELOPMENT_TEAM = C8G87XC4N7;
 				INFOPLIST_FILE = SwiftProject/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = yizhenjia.com.SwiftProject;
@@ -595,6 +597,7 @@
 			baseConfigurationReference = 171CB6319D1D3E9E0FFB4489 /* Pods-SwiftProject.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				DEVELOPMENT_TEAM = C8G87XC4N7;
 				INFOPLIST_FILE = SwiftProject/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = yizhenjia.com.SwiftProject;

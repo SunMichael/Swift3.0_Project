@@ -90,7 +90,7 @@ class SHTabBarController: UITabBarController {
         selectedImg.isHighlighted = true
         lastImg?.isHighlighted = false
         lastImg = selectedImg
-        
+
         self.selectedViewController = viewControllers?[sender.tag]
         navigationItem.title = String(describing: (self.titlesAry.object(at: sender.tag)))
     }

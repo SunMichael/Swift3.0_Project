@@ -12,6 +12,8 @@ class UserController: UIViewController {
     
     override func viewDidLoad() {
         
+        let userTab = UserTableView.init(frame: CGRect.init(x: 0, y: 0, width: screenW, height: screenH), style: UITableViewStyle.grouped)
+        self.view.addSubview(userTab)
     }
     
     
