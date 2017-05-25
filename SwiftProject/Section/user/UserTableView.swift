@@ -8,7 +8,8 @@
 
 import Foundation
 
-class UserTableView: UITableView ,UITableViewDataSource ,UITableViewDelegate{
+
+class UserTableView: UITableView ,UITableViewDataSource ,UITableViewDelegate, UserHeaderDelegate{
     
     var allIconAry : Array<Array<Any>>!
     var allTitleAry : Array<Array<Any>>!
@@ -26,8 +27,12 @@ class UserTableView: UITableView ,UITableViewDataSource ,UITableViewDelegate{
         self.delegate = self
         self.dataSource = self
         self.separatorStyle = UITableViewCellSeparatorStyle.singleLineEtched
+
+        let header = UserHeaderView.init(frame: CGRect.init(x: 0, y: 0, width: 0, height: 220))
+        header.delegate = self
         
-        self.tableHeaderView = UserHeaderView.init(frame: CGRect.init(x: 0, y: 0, width: 0, height: 220))
+        self.tableHeaderView = header
+        
         
     }
     
@@ -35,6 +40,10 @@ class UserTableView: UITableView ,UITableViewDataSource ,UITableViewDelegate{
         fatalError("init(coder:) has not been implemented")
     }
     
+    func clickedLoginBtn() {
+        let vc = LoginController()
+        ROOTCONTROLLER.pushViewController(vc, animated: true)
+    }
     
     func numberOfSections(in tableView: UITableView) -> Int {
         return allIconAry.count
@@ -55,13 +64,21 @@ class UserTableView: UITableView ,UITableViewDataSource ,UITableViewDelegate{
         let ary2 = allTitleAry[indexPath.section]
         cell?.iconIv.image = ary[indexPath.row] as? UIImage
         cell?.titleLab.text = ary2[indexPath.row] as? String
-        
+        cell?.tag = indexPath.row + 10 * indexPath.section
         return cell!
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         
-        
+        tableView.deselectRow(at: indexPath, animated: true)
+        let cell = tableView .cellForRow(at: indexPath)
+        print(" cell tag = " + String(describing: (cell?.tag)) )
+        switch cell!.tag {
+        case 0: break
+            
+        default: break
+            
+        }
     }
     
     func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
@@ -88,7 +105,7 @@ class UserTableCell: UITableViewCell {
         
         titleLab = IvyLabel.init(frame: CGRect.init(x: getMaxX(obj: iconIv) + 10, y: 0, width: 100, height: 50), text: nil, font: UIFont.systemFont(ofSize: 15), textColor: UIColor.black, textAlignment: .left, numberLines: 1)
         
-        moreIv = UIImageView.init(frame: CGRect.init(x: screenW - 30, y: 35.0/2, width: 15, height: 15))
+        moreIv = UIImageView.init(frame: CGRect.init(x: screenW - 25, y: 35.0/2, width: 15, height: 15))
         moreIv.image = getImage(obj: "more")
 
         line = CALayer();
@@ -108,9 +125,13 @@ class UserTableCell: UITableViewCell {
 }
 
 
+
 class UserHeaderView: UIView {
     
+    var delegate : UserHeaderDelegate?
+    
     override init(frame: CGRect) {
+        delegate = nil
         super.init(frame: frame)
         
         self.setupViews()
@@ -132,15 +153,37 @@ class UserHeaderView: UIView {
         self.addSubview(headerIv)
         
         let nameLab = IvyLabel.init(frame: CGRect.init(x: 0, y: getMaxY(obj: headerIv) + 10, width: screenW, height: 15), text: "点击登录", font: UIFont.systemFont(ofSize: 15), textColor: UIColor.black, textAlignment: .center, numberLines: 1)
+        let tap = UITapGestureRecognizer.init(target: self, action: #selector(UserHeaderView.clickedBtn))
+        nameLab?.isUserInteractionEnabled = true
+        nameLab?.addGestureRecognizer(tap)
         self.addSubview(nameLab!)
     }
+    
+    func clickedBtn() -> (){
+        if (delegate != nil) {
+            delegate?.clickedLoginBtn()
+        }
+    }
+}
+
+protocol UserHeaderDelegate {
+    func clickedLoginBtn() -> Void
 }
 
 
 
+//尾随闭包 
+/*
+func tailBlock(block: () -> Void) ->(){
+    print(" 尾随闭包 ")
+    block()
+}
 
-
-
+tailBlock {
+    
+}
+ 
+*/
 
 
 

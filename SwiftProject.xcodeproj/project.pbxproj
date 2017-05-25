@@ -19,6 +19,8 @@
 		0412BA271EC4587500152572 /* HomeTableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0412BA241EC4587500152572 /* HomeTableView.swift */; };
 		0412BA281EC4587500152572 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0412BA251EC4587500152572 /* ViewController.swift */; };
 		048559361ED2D320006960E1 /* ServiceModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 048559351ED2D320006960E1 /* ServiceModel.m */; };
+		04B335F11ED6B8DF00214253 /* Categary.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04B335F01ED6B8DF00214253 /* Categary.swift */; };
+		04B335F31ED6C03800214253 /* RequestApi.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04B335F21ED6C03800214253 /* RequestApi.swift */; };
 		04CFFDD31ED2F1260056BF77 /* AnyExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04CFFDB41ED2F1260056BF77 /* AnyExtensions.swift */; };
 		04CFFDD41ED2F1260056BF77 /* Configuration.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04CFFDB51ED2F1260056BF77 /* Configuration.swift */; };
 		04CFFDD51ED2F1260056BF77 /* CustomDateFormatTransform.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04CFFDB61ED2F1260056BF77 /* CustomDateFormatTransform.swift */; };
@@ -70,6 +72,8 @@
 		0412BA251EC4587500152572 /* ViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ViewController.swift; path = Section/home/ViewController.swift; sourceTree = "<group>"; };
 		048559341ED2D320006960E1 /* ServiceModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ServiceModel.h; path = Section/home/ServiceModel.h; sourceTree = "<group>"; };
 		048559351ED2D320006960E1 /* ServiceModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ServiceModel.m; path = Section/home/ServiceModel.m; sourceTree = "<group>"; };
+		04B335F01ED6B8DF00214253 /* Categary.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Categary.swift; path = Common/Categary.swift; sourceTree = "<group>"; };
+		04B335F21ED6C03800214253 /* RequestApi.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = RequestApi.swift; path = Common/RequestApi.swift; sourceTree = "<group>"; };
 		04CFFDB41ED2F1260056BF77 /* AnyExtensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AnyExtensions.swift; sourceTree = "<group>"; };
 		04CFFDB51ED2F1260056BF77 /* Configuration.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Configuration.swift; sourceTree = "<group>"; };
 		04CFFDB61ED2F1260056BF77 /* CustomDateFormatTransform.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomDateFormatTransform.swift; sourceTree = "<group>"; };
@@ -177,6 +181,8 @@
 				0412BA191EC4585600152572 /* SHTabBarController.swift */,
 				0412BA1A1EC4585600152572 /* swift-oc.h */,
 				04CFFDFA1ED3DA920056BF77 /* LoadingAnimation.swift */,
+				04B335F01ED6B8DF00214253 /* Categary.swift */,
+				04B335F21ED6C03800214253 /* RequestApi.swift */,
 			);
 			name = Common;
 			sourceTree = "<group>";
@@ -430,6 +436,7 @@
 				04CFFDE61ED2F1260056BF77 /* NSDecimalNumberTransform.swift in Sources */,
 				0412BA201EC4586200152572 /* IvyLabel.m in Sources */,
 				04CFFDEB1ED2F1260056BF77 /* ReflectionHelper.swift in Sources */,
+				04B335F31ED6C03800214253 /* RequestApi.swift in Sources */,
 				04CFFDE51ED2F1260056BF77 /* NominalType.swift in Sources */,
 				0412B9EC1EC2FEE400152572 /* AppDelegate.swift in Sources */,
 				04CFFDEF1ED2F1260056BF77 /* TransformType.swift in Sources */,
@@ -455,6 +462,7 @@
 				04CFFDE71ED2F1260056BF77 /* OtherExtension.swift in Sources */,
 				04CFFDE11ED2F1260056BF77 /* ISO8601DateTransform.swift in Sources */,
 				04CFFDD31ED2F1260056BF77 /* AnyExtensions.swift in Sources */,
+				04B335F11ED6B8DF00214253 /* Categary.swift in Sources */,
 				04CFFDD61ED2F1260056BF77 /* DataTransform.swift in Sources */,
 				04CFFDF91ED3D6250056BF77 /* UserTableView.swift in Sources */,
 				04CFFDD91ED2F1260056BF77 /* Deserializer.swift in Sources */,

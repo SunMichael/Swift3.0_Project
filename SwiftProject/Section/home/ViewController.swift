@@ -9,30 +9,33 @@
 import UIKit
 
 class HomeController: UIViewController {
-
+    
     var table = HomeTableView()
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        
         self.navigationItem.title = "首页"
         
         
-       table = HomeTableView.init(frame: CGRect.init(x: 0, y: 0, width: screenW, height: screenH - CGFloat(footH) ), style: UITableViewStyle.grouped)
-        table.requestForGoodsList()
+        table = HomeTableView.init(frame: CGRect.init(x: 0, y: 0, width: screenW, height: screenH - CGFloat(footH) ), style: UITableViewStyle.grouped)
+        
+        self.perform(#selector(HomeController.requestForList), with: nil, afterDelay: 0.1)
         print("  33333")
         view.addSubview(table)
         
     }
-    override func viewDidAppear(_ animated: Bool) {
+    func requestForList() -> () {
         table.requestForGoodsList()
-//        LoadingAnimation.show()
+    }
+    override func viewDidAppear(_ animated: Bool) {
+        //        table.requestForGoodsList()
     }
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
-
-
+    
+    
 }
 

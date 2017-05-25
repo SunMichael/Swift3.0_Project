@@ -101,7 +101,7 @@ class GoodsCell: UITableViewCell {
         
         super.init(style: style, reuseIdentifier: reuseIdentifier)
         
-        
+   
         logIV = UIImageView.init(frame: CGRect.init(x: 10, y: 10, width: 80, height: 80))
         logIV.image = UIImage.init(named: "zheng")
         addSubview(logIV)

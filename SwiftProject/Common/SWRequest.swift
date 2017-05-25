@@ -14,6 +14,14 @@ import SwiftyJSON
 typealias successBlock = (RequestResponse? , Error?) -> Void
 typealias failBlock = (Error?) -> Void
 
+class RequestError: HandyJSON {
+    var code : NSInteger = 200
+    var errorMsg : String? = nil
+    required init() {
+        
+    }
+}
+
 class RequestResponse : HandyJSON {
     var code : NSInteger = 200
     var errorMsg : String? = nil
@@ -49,6 +57,7 @@ class SWRequest: NSObject {
         
     }
 
+    //@escaping 逃逸闭包：函数返回之后执行，一般用于异步回调
     func startRequestWithHandle(success : @escaping successBlock ,fail : @escaping failBlock) -> Void {
         Alamofire.request(self.requestUrl, method: self.httpMethod, parameters: self.bodyParamters, encoding: self.encoding, headers: nil).responseJSON { response in
             print(response)
@@ -57,9 +66,14 @@ class SWRequest: NSObject {
                 let object = RequestResponse.deserialize(from: json)
                 success(object, response.error)
             }else{
+                
                 fail(response.error)
             }
         }
+    }
+    
+    func cancelRequest() -> Void {
+
     }
     
 }

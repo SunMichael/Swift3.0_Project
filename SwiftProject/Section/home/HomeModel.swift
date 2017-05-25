@@ -17,3 +17,12 @@ class ServiceModel: HandyJSON {
         
     }
 }
+
+class AccountModel : HandyJSON {
+    var id : String?
+    var nickName : String?
+    var phone : String?
+    required init() {
+        
+    }
+}
