@@ -12,7 +12,7 @@ import SwiftyJSON
 
 
 typealias successBlock = (RequestResponse? , Error?) -> Void
-typealias failBlock = (Error?) -> Void
+typealias failBlock = (RequestError?) -> Void
 
 class RequestError: HandyJSON {
     var code : NSInteger = 200
@@ -26,7 +26,7 @@ class RequestResponse : HandyJSON {
     var code : NSInteger = 200
     var errorMsg : String? = nil
     var result : Any?
-    
+    var success : Bool?
     required init() {}
     
 }
@@ -56,24 +56,28 @@ class SWRequest: NSObject {
         }
         
     }
-
+    
     //@escaping 逃逸闭包：函数返回之后执行，一般用于异步回调
     func startRequestWithHandle(success : @escaping successBlock ,fail : @escaping failBlock) -> Void {
         Alamofire.request(self.requestUrl, method: self.httpMethod, parameters: self.bodyParamters, encoding: self.encoding, headers: nil).responseJSON { response in
             print(response)
-            if response.result.isSuccess {
-                let json = try! JSONSerialization.jsonObject(with: response.data!, options: JSONSerialization.ReadingOptions.mutableContainers) as! NSDictionary
-                let object = RequestResponse.deserialize(from: json)
+            
+            let json = try! JSONSerialization.jsonObject(with: response.data!, options: JSONSerialization.ReadingOptions.mutableContainers) as! NSDictionary
+            let object = RequestResponse.deserialize(from: json)
+            if (object?.success)!{
                 success(object, response.error)
             }else{
                 
-                fail(response.error)
+                let errorObj = RequestError.deserialize(from: json)
+                fail(errorObj)
             }
+            
+            
         }
     }
     
     func cancelRequest() -> Void {
-
+        
     }
     
 }
@@ -86,7 +90,7 @@ class HTTPConfig: NSObject {
         get {
             return false
         }
-       
+        
     }
     var baseUrl: String {
         get {

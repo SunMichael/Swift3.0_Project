@@ -12,7 +12,7 @@ import Foundation
 
 class RequestApi: NSObject {
     
-    public class func userLogin(_ phone: String , andCode code : String , completion: @escaping (_ account: AccountModel? , _ error : NSError?) -> () ) -> Void{
+    public class func userLogin(_ phone: String , andCode code : String , completion: @escaping (_ account: AccountModel? , _ error : RequestError?) -> () ) -> Void{
         let request = SWRequest()
         request.apiPath = "user/login"
         request.bodyParamters = ["phone" : phone , "code" : code]
@@ -21,7 +21,7 @@ class RequestApi: NSObject {
             let model = AccountModel.deserialize(from: dic)
             completion(model, nil)
         }) { (error) in
-            completion(nil, error as NSError?)
+            completion(nil, error)
         }
     }
 }

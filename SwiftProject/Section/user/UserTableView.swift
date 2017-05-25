@@ -33,7 +33,9 @@ class UserTableView: UITableView ,UITableViewDataSource ,UITableViewDelegate, Us
         
         self.tableHeaderView = header
         
-        
+        let _ = { () -> String in
+            return ""
+        }
     }
     
     required init?(coder aDecoder: NSCoder) {
@@ -129,6 +131,9 @@ class UserTableCell: UITableViewCell {
 class UserHeaderView: UIView {
     
     var delegate : UserHeaderDelegate?
+
+    var nameLab : IvyLabel?
+    var iconIv : UIImageView!
     
     override init(frame: CGRect) {
         delegate = nil
@@ -143,16 +148,16 @@ class UserHeaderView: UIView {
     
     func  setupViews() -> () {
         let bgimg = getImage(obj: "headerbj")
-        let iconIv = UIImageView.init(image: bgimg)
+        iconIv = UIImageView.init(image: bgimg)
         iconIv.frame = CGRect.init(x: 0, y: 0, width: screenW, height: bgimg.size.height)
-        self.addSubview(iconIv)
+        self.addSubview(iconIv!)
         
         let headimg = getImage(obj: "touxiang")
         let headerIv = UIImageView.init(image: headimg)
         headerIv.frame = CGRect.init(x: screenW/2 - headimg.size.width/2, y: height(obj: iconIv)/2 - headimg.size.height/2, width: headimg.size.width, height: headimg.size.height)
         self.addSubview(headerIv)
         
-        let nameLab = IvyLabel.init(frame: CGRect.init(x: 0, y: getMaxY(obj: headerIv) + 10, width: screenW, height: 15), text: "点击登录", font: UIFont.systemFont(ofSize: 15), textColor: UIColor.black, textAlignment: .center, numberLines: 1)
+        nameLab = IvyLabel.init(frame: CGRect.init(x: 0, y: getMaxY(obj: headerIv) + 10, width: screenW, height: 15), text: "点击登录", font: UIFont.systemFont(ofSize: 15), textColor: UIColor.black, textAlignment: .center, numberLines: 1)
         let tap = UITapGestureRecognizer.init(target: self, action: #selector(UserHeaderView.clickedBtn))
         nameLab?.isUserInteractionEnabled = true
         nameLab?.addGestureRecognizer(tap)

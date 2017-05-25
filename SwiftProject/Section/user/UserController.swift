@@ -26,10 +26,11 @@ class LoginController: UIViewController {
     override func viewDidLoad() {
         self.navigationItem.title = "登录"
         self.view.backgroundColor = UIColor.white
+        self.allTfAry = NSMutableArray()
         setupViews()
     }
     
-    let allTfAry: NSMutableArray? = nil
+    var allTfAry: NSMutableArray!
     
     func setupViews() -> (){
         let offx = screenW/2 - 200.0/2
@@ -46,7 +47,7 @@ class LoginController: UIViewController {
         }
         
         
-        let codeBtn = UIButton.init(frame: CGRect.init(x: screenW - 160.0 - 20.0, y: 160.0, width: 100.0, height: 30.0))
+        let codeBtn = UIButton.init(frame: CGRect.init(x: screenW - 120.0, y: 160.0, width: 100.0, height: 30.0))
         codeBtn.addTarget(self, action: #selector(LoginController.getPhoneCode), for: .touchUpInside)
         codeBtn.setTitle("获取验证码", for: .normal)
         codeBtn.layer.masksToBounds = true
@@ -79,7 +80,7 @@ class LoginController: UIViewController {
         if (phoneTf.text?.isEmpty) == true {
             return
         }
-        if (codeTf.text?.isEmpty) == true {
+        if codeTf.text?.isEmpty == true {
             return
         }
         LoadingAnimation.show()
