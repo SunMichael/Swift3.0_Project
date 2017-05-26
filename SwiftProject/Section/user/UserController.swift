@@ -108,7 +108,7 @@ class LoginController: UIViewController {
             
             LoadingAnimation.dismiss()
             if (account != nil) {
-                print(" accoutn : \(SHUserDefault().accountInfor)")
+                
                 self.navigationController!.popViewController(animated: true)
             }else{
                 print(" 登录失败 ")

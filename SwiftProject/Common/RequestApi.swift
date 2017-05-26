@@ -18,9 +18,12 @@ class RequestApi: NSObject {
         request.bodyParamters = ["phone" : phone , "code" : code]
         request.startRequestWithHandle(success: { (response, error) in
             let dic = response?.result as! NSDictionary
-            let model = AccountModel.deserialize(from: dic)
-            
+            let model = AccountModel.deserialize(from: dic["user"] as? NSDictionary)
             SHUserDefault().accountInfor = model!
+            
+
+            print(" property : \(model?.getProperties(cls: (model?.classForCoder)!))" )
+            
             
             completion(model, nil)
         }) { (error) in

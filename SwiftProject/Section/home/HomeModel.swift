@@ -18,20 +18,106 @@ class ServiceModel: HandyJSON {
     }
 }
 
-class AccountModel : HandyJSON ,NSCoding {
-    var id : String?
+class AccountModel : NSObject, HandyJSON ,NSCoding {
+    var id : Int?
     var nickName : String?
     var phone : String?
-    required init() {
-
-    }
-
-    func encode(with aCoder: NSCoder) {
+    required override init() {
         
+    }
+   
+    
+    func encode(with aCoder: NSCoder) {
+        self.sh_encode(aCoder: aCoder)
     }
     required init?(coder aDecoder: NSCoder) {
+        super.init()
+        self.sh_decode(aDecoder: aDecoder)
+    }
+    
+}
+extension NSObject {
+
+    
+    func getProperties(cls : AnyClass) -> [String]? {
+        guard let className = NSString.init(cString: class_getName(cls), encoding: String.Encoding.utf8.rawValue) else {
+            return nil
+        }
+        if className.isEqual(to: "NSObject") {
+            return nil
+        }
+        
+        var propertyAry = [String]()
+        let superCls = cls.superclass() as! NSObject.Type
+        let superPropertyAry = getProperties(cls: superCls)
+        if superPropertyAry != nil {
+            propertyAry += superPropertyAry!
+        }
+        
+        var count: UInt32 = 0
+        let allProperty = class_copyPropertyList(cls, &count)
+
+        for i in 0..<Int(count) {
+            let propertyname = String.init(utf8String: property_getName(allProperty?[i]))
+            propertyAry.append(propertyname!)
+        }
+        
+        return propertyAry
         
     }
     
+    func sh_encode(aCoder: NSCoder) -> () {
+        let allProperty = self.getProperties(cls: self.classForCoder)
+        for i in 0..<Int((allProperty?.count)!) {
+            let first = allProperty?[i]
+
+            let obj = self.value(forKey: first!) as Any?
+            if obj == nil {
+                return
+            }
+            aCoder.encode(obj, forKey: first!)
+        }
+    }
     
+    func sh_decode(aDecoder: NSCoder) -> () {
+        let allProperty = self.getProperties(cls: self.classForCoder)
+        for i in 0..<Int((allProperty?.count)!) {
+            let name = (allProperty?[i])
+            let obj = aDecoder.decodeObject(forKey: name!)
+            if obj == nil {
+                return
+            }
+            self.setValue(obj, forKey: name!)
+        }
+    }
+    
+    func getValueOfProperty(property:String) -> AnyObject?{
+        let allPropertys = self.getProperties(cls: self.classForCoder)
+        if(allPropertys?.contains(property))!{
+            return self.value(forKey: property) as AnyObject?
+            
+        }else{
+            return nil
+        }
+    }
+    
+    func replaceKeyFromPropertyName() -> [String : String] {
+        return ["" : ""]
+    }
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

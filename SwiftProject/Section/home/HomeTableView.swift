@@ -78,6 +78,7 @@ class HomeTableView: UITableView ,UITableViewDataSource ,UITableViewDelegate{
             for i in 0 ..< obj.count {
                 let dic = obj[i] as! NSDictionary
                 let model :ServiceModel = ServiceModel.deserialize(from: dic)!
+                
                 self.allGoods?.add(model)
             }
             self .reloadData()
