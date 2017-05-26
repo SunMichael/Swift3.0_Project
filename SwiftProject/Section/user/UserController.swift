@@ -29,8 +29,9 @@ class LoginController: UIViewController {
         self.allTfAry = NSMutableArray()
         setupViews()
     }
-    
+    var count: NSInteger = 60
     var allTfAry: NSMutableArray!
+    var codeBtn : UIButton!
     
     func setupViews() -> (){
         let offx = screenW/2 - 200.0/2
@@ -47,7 +48,7 @@ class LoginController: UIViewController {
         }
         
         
-        let codeBtn = UIButton.init(frame: CGRect.init(x: screenW - 120.0, y: 160.0, width: 100.0, height: 30.0))
+        codeBtn = UIButton.init(frame: CGRect.init(x: screenW - 120.0, y: 160.0, width: 100.0, height: 30.0))
         codeBtn.addTarget(self, action: #selector(LoginController.getPhoneCode), for: .touchUpInside)
         codeBtn.setTitle("获取验证码", for: .normal)
         codeBtn.layer.masksToBounds = true
@@ -55,7 +56,9 @@ class LoginController: UIViewController {
         codeBtn.titleLabel?.font = UIFont.systemFont(ofSize: 14)
         let img = UIImage.getImageWithColor(kRedColor())
         codeBtn.setBackgroundImage(img, for: .normal)
-        codeBtn.backgroundColor = UIColor.yellow
+        let disableImg = UIImage.getImageWithColor(UIColor.lightGray)
+        codeBtn.setBackgroundImage(disableImg, for: .disabled)
+        
         self.view.addSubview(codeBtn)
         
         let loginBtn = UIButton.init(frame: CGRect.init(x: Double(offx), y: offy + 40.0, width: 200.0, height: 30.0))
@@ -71,6 +74,23 @@ class LoginController: UIViewController {
     }
     
     func getPhoneCode() -> Void {
+        let timer = DispatchSource.makeTimerSource()
+        self.codeBtn.isEnabled = false
+        timer.setEventHandler { 
+            self.count -= 1
+            DispatchQueue.main.async {
+              self.codeBtn.setTitle("已发送" + String(self.count), for: .normal)
+            }
+            if self.count <= 0 {
+                timer.cancel()
+                self.count = 60
+                self.codeBtn.isEnabled = true
+                self.codeBtn.setTitle("获取验证码", for: .normal)
+            }
+            
+        }
+        timer.scheduleRepeating(deadline: DispatchTime.now(), interval: .seconds(1), leeway: .milliseconds(1))
+        timer.resume()
         
     }
     func login() -> () {
@@ -88,6 +108,7 @@ class LoginController: UIViewController {
             
             LoadingAnimation.dismiss()
             if (account != nil) {
+                print(" accoutn : \(SHUserDefault().accountInfor)")
                 self.navigationController!.popViewController(animated: true)
             }else{
                 print(" 登录失败 ")

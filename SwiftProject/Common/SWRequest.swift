@@ -15,7 +15,7 @@ typealias successBlock = (RequestResponse? , Error?) -> Void
 typealias failBlock = (RequestError?) -> Void
 
 class RequestError: HandyJSON {
-    var code : NSInteger = 200
+    var code : NSInteger = 0
     var errorMsg : String? = nil
     required init() {
         
@@ -62,16 +62,22 @@ class SWRequest: NSObject {
         Alamofire.request(self.requestUrl, method: self.httpMethod, parameters: self.bodyParamters, encoding: self.encoding, headers: nil).responseJSON { response in
             print(response)
             
-            let json = try! JSONSerialization.jsonObject(with: response.data!, options: JSONSerialization.ReadingOptions.mutableContainers) as! NSDictionary
-            let object = RequestResponse.deserialize(from: json)
-            if (object?.success)!{
-                success(object, response.error)
+            if response.result.isSuccess{
+                let json = try! JSONSerialization.jsonObject(with: response.data!, options: JSONSerialization.ReadingOptions.mutableContainers) as! NSDictionary
+                let object = RequestResponse.deserialize(from: json)
+                if (object?.success)!{
+                    success(object, response.error)
+                }else{
+                    
+                    let errorObj = RequestError.deserialize(from: json)
+                    fail(errorObj)
+                }
             }else{
-                
-                let errorObj = RequestError.deserialize(from: json)
-                fail(errorObj)
+                let obj = RequestError()
+                obj.errorMsg = response.error.debugDescription
+                obj.code = (response.response?.statusCode)!
+                fail(obj)
             }
-            
             
         }
     }

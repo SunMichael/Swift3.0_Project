@@ -18,11 +18,20 @@ class ServiceModel: HandyJSON {
     }
 }
 
-class AccountModel : HandyJSON {
+class AccountModel : HandyJSON ,NSCoding {
     var id : String?
     var nickName : String?
     var phone : String?
     required init() {
+
+    }
+
+    func encode(with aCoder: NSCoder) {
         
     }
+    required init?(coder aDecoder: NSCoder) {
+        
+    }
+    
+    
 }
