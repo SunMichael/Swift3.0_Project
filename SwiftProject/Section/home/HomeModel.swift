@@ -52,7 +52,8 @@ extension NSObject {
             }
         }
         set {
-            objc_setAssociatedObject(self, DynamicKey.allPtyKey, newValue, .OBJC_ASSOCIATION_COPY)
+            //OBJC_ASSOCIATION_COPY_NONATOMIC  非原子属性运算更快 但线程不安全
+            objc_setAssociatedObject(self, DynamicKey.allPtyKey, newValue, .OBJC_ASSOCIATION_COPY_NONATOMIC)
         }
     }
     

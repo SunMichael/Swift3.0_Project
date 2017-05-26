@@ -68,7 +68,7 @@ class HomeTableView: UITableView ,UITableViewDataSource ,UITableViewDelegate{
 
     func requestForGoodsList() -> Void {
         LoadingAnimation.show()
-        let request = SWRequest()
+        let request = BaseRequest()
         request.apiPath = "service/homeYuesaoList";
         request.httpMethod = .post
         request.bodyParamters = ["city" : "hangzhou","lng" : "30.278554", "lat" : "120.115817"]
