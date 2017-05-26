@@ -36,8 +36,25 @@ class AccountModel : NSObject, HandyJSON ,NSCoding {
     }
     
 }
-extension NSObject {
 
+struct DynamicKey {
+    static let allPtyKey = UnsafePointer<Any>.init(bitPattern: "allPty".hashValue)
+}
+
+extension NSObject {
+    
+    var allPty : [String] {
+        get {
+            if objc_getAssociatedObject(self, DynamicKey.allPtyKey) == nil {
+                return [String]()
+            }else{
+                return objc_getAssociatedObject(self, DynamicKey.allPtyKey) as! [String]
+            }
+        }
+        set {
+            objc_setAssociatedObject(self, DynamicKey.allPtyKey, newValue, .OBJC_ASSOCIATION_COPY)
+        }
+    }
     
     func getProperties(cls : AnyClass) -> [String]? {
         guard let className = NSString.init(cString: class_getName(cls), encoding: String.Encoding.utf8.rawValue) else {
@@ -45,6 +62,9 @@ extension NSObject {
         }
         if className.isEqual(to: "NSObject") {
             return nil
+        }
+        if self.allPty.count > 0 {
+            return self.allPty
         }
         
         var propertyAry = [String]()
@@ -61,7 +81,7 @@ extension NSObject {
             let propertyname = String.init(utf8String: property_getName(allProperty?[i]))
             propertyAry.append(propertyname!)
         }
-        
+        self.allPty = propertyAry
         return propertyAry
         
     }
