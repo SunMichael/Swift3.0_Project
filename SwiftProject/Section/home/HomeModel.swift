@@ -20,8 +20,9 @@ class ServiceModel: HandyJSON {
 
 class AccountModel : NSObject, HandyJSON ,NSCoding {
     var id : Int?
-    var nickName : String?
+    var realName : String?
     var phone : String?
+    var logo : String?
     required override init() {
         
     }
@@ -35,6 +36,18 @@ class AccountModel : NSObject, HandyJSON ,NSCoding {
         self.sh_decode(aDecoder: aDecoder)
     }
     
+}
+
+
+class YuesaoModel: NSObject, HandyJSON {
+    var orderNo : String?
+    var reservationId : String?
+    var status : String?
+    var userServiceId : String?
+    
+    required override init() {
+        
+    }
 }
 
 struct DynamicKey {

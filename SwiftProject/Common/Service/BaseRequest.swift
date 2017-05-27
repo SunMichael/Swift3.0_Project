@@ -11,7 +11,7 @@ import Alamofire
 import SwiftyJSON
 
 
-typealias successBlock = (RequestResponse? , Error?) -> Void
+typealias successBlock = (RequestResponse? , RequestError?) -> Void
 typealias failBlock = (RequestError?) -> Void
 
 class RequestError: HandyJSON {
@@ -56,21 +56,29 @@ class BaseRequest: NSObject {
         }
         
     }
-    
+    func httpHeader() -> [String : String] {
+        var headerDic = [String : String]()
+        let token = SHUserDefault.shareInstance.getToken()
+        if token.isEmpty != false {
+            headerDic["token"] = token
+        }
+        return headerDic
+    }
     //@escaping 逃逸闭包：函数返回之后执行，一般用于异步回调
     func startRequestWithHandle(success : @escaping successBlock ,fail : @escaping failBlock) -> Void {
-        Alamofire.request(self.requestUrl, method: self.httpMethod, parameters: self.bodyParamters, encoding: self.encoding, headers: nil).responseJSON { response in
+        Alamofire.request(self.requestUrl, method: self.httpMethod, parameters: self.bodyParamters, encoding: self.encoding, headers: httpHeader()).responseJSON { response in
             print(response)
             
-            if response.result.isSuccess{
+            if response.result.isSuccess{        //http 连接是否成功 , 服务器响应是否成功
                 let json = try! JSONSerialization.jsonObject(with: response.data!, options: JSONSerialization.ReadingOptions.mutableContainers) as! NSDictionary
                 let object = RequestResponse.deserialize(from: json)
                 if (object?.success)!{
-                    success(object, response.error)
+                    success(object, nil)
                 }else{
-                    
-                    let errorObj = RequestError.deserialize(from: json)
-                    fail(errorObj)
+                    let obj = RequestError()
+                    obj.errorMsg = response.error.debugDescription
+                    obj.code = (response.response?.statusCode)!
+                    fail(obj)
                 }
             }else{
                 let obj = RequestError()

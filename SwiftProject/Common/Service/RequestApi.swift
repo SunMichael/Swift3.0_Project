@@ -18,9 +18,10 @@ class RequestApi: NSObject {
         request.bodyParamters = ["phone" : phone , "code" : code]
         request.startRequestWithHandle(success: { (response, error) in
             let dic = response?.result as! NSDictionary
+            let token = dic["token"] as? String
             let model = AccountModel.deserialize(from: dic["user"] as? NSDictionary)
-            SHUserDefault().accountInfor = model!
-            
+            SHUserDefault.shareInstance.accountInfor = model!
+            SHUserDefault.shareInstance.setToken(token: token!)
 
             print(" property : \(model?.getProperties(cls: (model?.classForCoder)!))" )
             
@@ -30,13 +31,25 @@ class RequestApi: NSObject {
             completion(nil, error)
         }
     }
+    
+    public class func getUserYuesaoInfor(completion:@escaping (_ ysmodel: YuesaoModel? , _ error : RequestError? ) -> ()) -> (){
+        let request = BaseRequest()
+        request.apiPath = ""
+        request.startRequestWithHandle(success: { (response, error) in
+            let dic = response?.result as! NSDictionary
+            let model = YuesaoModel.deserialize(from: dic)
+            completion(model , nil)
+        }) { (error) in
+            completion(nil , error)
+        }
+    }
 }
 
 
 
-class SHUserDefault: UserDefaults {
-    static let shareDefault = SHUserDefault.standard
-
+class SHUserDefault: NSObject {
+    private static let shareDefault = UserDefaults.standard
+    static let shareInstance = SHUserDefault()
     var accountInfor: AccountModel {
         get {
             let data = SHUserDefault.shareDefault.value(forKey: "account")
@@ -48,5 +61,13 @@ class SHUserDefault: UserDefaults {
             SHUserDefault.shareDefault.set(data, forKey: "account")
         }
     }
+    
+    func setToken(token : String) -> (){
+        SHUserDefault.shareDefault.set(token, forKey: "token")
+    }
+    func getToken() -> String {
+        return SHUserDefault.shareDefault.object(forKey: "token") as! String
+    }
+
     
 }

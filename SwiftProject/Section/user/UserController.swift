@@ -108,7 +108,7 @@ class LoginController: UIViewController {
             
             LoadingAnimation.dismiss()
             if (account != nil) {
-                
+                NotificationCenter.default.post(name: NSNotification.Name(rawValue: LOGINSUCESSNOTIC), object: nil)
                 self.navigationController!.popViewController(animated: true)
             }else{
                 print(" 登录失败 ")

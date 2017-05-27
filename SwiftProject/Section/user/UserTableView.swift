@@ -13,6 +13,7 @@ class UserTableView: UITableView ,UITableViewDataSource ,UITableViewDelegate, Us
     
     var allIconAry : Array<Array<Any>>!
     var allTitleAry : Array<Array<Any>>!
+    var header: UserHeaderView!
     
     override init(frame: CGRect, style: UITableViewStyle) {
         
@@ -28,7 +29,7 @@ class UserTableView: UITableView ,UITableViewDataSource ,UITableViewDelegate, Us
         self.dataSource = self
         self.separatorStyle = UITableViewCellSeparatorStyle.singleLineEtched
 
-        let header = UserHeaderView.init(frame: CGRect.init(x: 0, y: 0, width: 0, height: 220))
+        header = UserHeaderView.init(frame: CGRect.init(x: 0, y: 0, width: 0, height: 220))
         header.delegate = self
         
         self.tableHeaderView = header
@@ -36,11 +37,20 @@ class UserTableView: UITableView ,UITableViewDataSource ,UITableViewDelegate, Us
         let _ = { () -> String in
             return ""
         }
+        
+        NotificationCenter.default.addObserver(self, selector: #selector(UserTableView.reloadHeader), name: NSNotification.Name(rawValue: LOGINSUCESSNOTIC), object: nil)
+        
     }
     
     required init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
+    
+    //登录之后刷新header
+    func reloadHeader() -> () {
+        header.updateInfor()
+    }
+    
     
     func clickedLoginBtn() {
         let vc = LoginController()
@@ -134,7 +144,7 @@ class UserHeaderView: UIView {
 
     var nameLab : IvyLabel?
     var iconIv : UIImageView!
-    
+    var headerIv : UIImageView!
     override init(frame: CGRect) {
         delegate = nil
         super.init(frame: frame)
@@ -153,7 +163,7 @@ class UserHeaderView: UIView {
         self.addSubview(iconIv!)
         
         let headimg = getImage(obj: "touxiang")
-        let headerIv = UIImageView.init(image: headimg)
+        headerIv = UIImageView.init(image: headimg)
         headerIv.frame = CGRect.init(x: screenW/2 - headimg.size.width/2, y: height(obj: iconIv)/2 - headimg.size.height/2, width: headimg.size.width, height: headimg.size.height)
         self.addSubview(headerIv)
         
@@ -162,6 +172,21 @@ class UserHeaderView: UIView {
         nameLab?.isUserInteractionEnabled = true
         nameLab?.addGestureRecognizer(tap)
         self.addSubview(nameLab!)
+        
+        let account = SHUserDefault.shareInstance.accountInfor
+        if account.phone?.isEmpty != false {
+            self.updateInfor()
+        }
+    }
+    
+    func updateInfor() -> () {
+        let account = SHUserDefault.shareInstance.accountInfor
+        
+        nameLab?.text = account.realName
+        let img = getImage(obj: "touxiang")
+        headerIv.kf.setImage(with: URL.init(string: account.logo!), placeholder: img, options: nil, progressBlock: nil) { (image, nil, type, url) in
+            self.headerIv.image = image
+        }
     }
     
     func clickedBtn() -> (){

@@ -27,7 +27,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         let backItem = UIBarButtonItem.init(title: "返回", style: UIBarButtonItemStyle.plain, target: self, action: nil)
         tabbar.navigationItem.backBarButtonItem = backItem
         window?.rootViewController = nvgation
-        print(" accoutn : \(SHUserDefault().accountInfor)")
+        print(" accoutn : \(SHUserDefault.shareInstance.accountInfor)")
         
         addNetworkStatusObserve()
         print("  11111")

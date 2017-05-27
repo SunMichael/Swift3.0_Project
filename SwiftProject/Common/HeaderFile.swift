@@ -48,3 +48,8 @@ func lineColor() -> UIColor{
 func kRedColor() -> UIColor{
     return UIColor.init(colorLiteralRed: 240.0/255.0, green: 54.0 / 255.0, blue: 56.0 / 255.0, alpha: 1.0)
 }
+
+
+
+let LOGINSUCESSNOTIC = "loginsuccess"
+
