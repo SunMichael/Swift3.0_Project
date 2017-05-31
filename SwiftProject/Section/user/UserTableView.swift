@@ -28,7 +28,7 @@ class UserTableView: UITableView ,UITableViewDataSource ,UITableViewDelegate, Us
         self.delegate = self
         self.dataSource = self
         self.separatorStyle = UITableViewCellSeparatorStyle.singleLineEtched
-
+        
         header = UserHeaderView.init(frame: CGRect.init(x: 0, y: 0, width: 0, height: 220))
         header.delegate = self
         
@@ -86,9 +86,28 @@ class UserTableView: UITableView ,UITableViewDataSource ,UITableViewDelegate, Us
         let cell = tableView .cellForRow(at: indexPath)
         print(" cell tag = " + String(describing: (cell?.tag)) )
         switch cell!.tag {
-        case 0: break
+        case 21:
+            let action = UIAlertController.init(title: "", message: "退出后不会删除任何历史记录，下次登录依然可以使用本账户", preferredStyle: .actionSheet)
+            let loginOut = UIAlertAction.init(title: "退出登录", style: .destructive, handler: { (action) in
+                SHUserDefault.shareInstance.setToken(token: "")
+                SHUserDefault.shareInstance.accountInfor = nil
+                let vc = LoginController()
+                vc.isLoginOut = true
+                ROOTCONTROLLER.pushViewController(vc, animated: true)
+            })
             
-        default: break
+            let cancel = UIAlertAction.init(title: "取消", style: .cancel, handler: { (obj) in
+                
+            })
+            action.addAction(loginOut)
+            action.addAction(cancel)
+            ROOTCONTROLLER.present(action, animated: true, completion: { 
+                
+            })
+            break
+            
+        default:
+            break
             
         }
     }
@@ -119,7 +138,7 @@ class UserTableCell: UITableViewCell {
         
         moreIv = UIImageView.init(frame: CGRect.init(x: screenW - 25, y: 35.0/2, width: 15, height: 15))
         moreIv.image = getImage(obj: "more")
-
+        
         line = CALayer();
         line.backgroundColor = lineColor().cgColor;
         line.frame = CGRect.init(x: 0, y: 50 - 0.5, width: screenW, height: 0.5)
@@ -141,7 +160,7 @@ class UserTableCell: UITableViewCell {
 class UserHeaderView: UIView {
     
     var delegate : UserHeaderDelegate?
-
+    
     var nameLab : IvyLabel?
     var iconIv : UIImageView!
     var headerIv : UIImageView!
@@ -174,18 +193,24 @@ class UserHeaderView: UIView {
         self.addSubview(nameLab!)
         
         let account = SHUserDefault.shareInstance.accountInfor
-        if account.phone?.isEmpty != false {
+        if account?.phone?.isEmpty == false {
             self.updateInfor()
         }
     }
     
     func updateInfor() -> () {
-        let account = SHUserDefault.shareInstance.accountInfor
+//        let account = SHUserDefault.shareInstance.accountInfor
         
+        guard let account = SHUserDefault.shareInstance.accountInfor else {
+            return
+        }
         nameLab?.text = account.realName
         let img = getImage(obj: "touxiang")
-        headerIv.kf.setImage(with: URL.init(string: account.logo!), placeholder: img, options: nil, progressBlock: nil) { (image, nil, type, url) in
-            self.headerIv.image = image
+        headerIv.kf.setImage(with: URL.init(string: (account.logo!)), placeholder: img, options: nil, progressBlock: nil) { (image, error, type, url) in
+            if error == nil {
+                self.headerIv.image = image
+            }
+            
         }
     }
     
@@ -202,18 +227,18 @@ protocol UserHeaderDelegate {
 
 
 
-//尾随闭包 
+//尾随闭包
 /*
-func tailBlock(block: () -> Void) ->(){
-    print(" 尾随闭包 ")
-    block()
-}
-
-tailBlock {
-    
-}
+ func tailBlock(block: () -> Void) ->(){
+ print(" 尾随闭包 ")
+ block()
+ }
  
-*/
+ tailBlock {
+ 
+ }
+ 
+ */
 
 
 

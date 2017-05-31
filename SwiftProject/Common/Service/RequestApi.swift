@@ -50,14 +50,14 @@ class RequestApi: NSObject {
 class SHUserDefault: NSObject {
     private static let shareDefault = UserDefaults.standard
     static let shareInstance = SHUserDefault()
-    var accountInfor: AccountModel {
+    var accountInfor: AccountModel? {
         get {
             let data = SHUserDefault.shareDefault.value(forKey: "account")
-            return NSKeyedUnarchiver.unarchiveObject(with: data as! Data) as! AccountModel
+            return NSKeyedUnarchiver.unarchiveObject(with: data as! Data) as? AccountModel
         }
         set {
 //            self.accountInfor = newValue
-            let data = NSKeyedArchiver.archivedData(withRootObject: newValue)
+            let data = NSKeyedArchiver.archivedData(withRootObject: newValue as Any)
             SHUserDefault.shareDefault.set(data, forKey: "account")
         }
     }
@@ -66,7 +66,11 @@ class SHUserDefault: NSObject {
         SHUserDefault.shareDefault.set(token, forKey: "token")
     }
     func getToken() -> String {
-        return SHUserDefault.shareDefault.object(forKey: "token") as! String
+        let obj = SHUserDefault.shareDefault.object(forKey: "token")
+        if obj != nil {
+            return  obj as! String
+        }
+        return ""
     }
 
     

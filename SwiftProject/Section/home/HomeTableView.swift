@@ -52,7 +52,10 @@ class HomeTableView: UITableView ,UITableViewDataSource ,UITableViewDelegate{
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         
+        tableView.deselectRow(at: indexPath, animated: true)
         let detailVc = GoodsDetailController()
+        let model = allGoods?[indexPath.row] as! ServiceModel
+        detailVc.goodsNames = model.name
         let nc: UINavigationController = UIApplication.shared.keyWindow?.rootViewController as! UINavigationController
         
         nc.pushViewController(detailVc, animated: true)

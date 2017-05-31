@@ -14,7 +14,7 @@ class StoreController: UIViewController {
         super.viewDidLoad()
 
         
-
+        print("tabbarController : \(self.tabBarController)")
     }
     
     override func didReceiveMemoryWarning() {

@@ -23,12 +23,24 @@ class UserController: UIViewController {
 
 
 class LoginController: UIViewController {
+    var isLoginOut: Bool = false
     override func viewDidLoad() {
-        self.navigationItem.title = "登录"
+        self.navigationController?.navigationItem.title = "登录"
+        self.navigationItem.backBarButtonItem?.action = #selector(LoginController.back)
         self.view.backgroundColor = UIColor.white
         self.allTfAry = NSMutableArray()
         setupViews()
     }
+
+    func back() -> () {
+        if self.isLoginOut == true {
+            let appdelegate = UIApplication.shared.delegate as! AppDelegate
+            appdelegate.initBaseController()
+        }else{
+            self.navigationController!.popViewController(animated: true)
+        }
+    }
+    
     var count: NSInteger = 60
     var allTfAry: NSMutableArray!
     var codeBtn : UIButton!
