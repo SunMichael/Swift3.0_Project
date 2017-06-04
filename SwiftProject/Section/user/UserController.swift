@@ -13,7 +13,7 @@ import Alamofire
 class UserController: UIViewController {
     
     override func viewDidLoad() {
-        
+
         let userTab = UserTableView.init(frame: CGRect.init(x: 0, y: 0, width: screenW, height: screenH), style: UITableViewStyle.grouped)
         self.view.addSubview(userTab)
     }
@@ -25,7 +25,7 @@ class UserController: UIViewController {
 class LoginController: UIViewController {
     var isLoginOut: Bool = false
     override func viewDidLoad() {
-        self.navigationController?.navigationItem.title = "登录"
+        self.navigationItem.title = "登录"
         self.navigationItem.backBarButtonItem?.action = #selector(LoginController.back)
         self.view.backgroundColor = UIColor.white
         self.allTfAry = NSMutableArray()

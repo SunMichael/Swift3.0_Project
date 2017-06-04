@@ -39,6 +39,18 @@ class AccountModel : NSObject, HandyJSON ,NSCoding {
 }
 
 
+extension AccountModel {       //实现过CustomStringConvertible协议的类 通过override来实现重写
+    override var description: String {
+        return ""
+    }
+    
+    override var debugDescription: String {
+        return ""
+    }
+}
+
+
+
 class YuesaoModel: NSObject, HandyJSON {
     var orderNo : String?
     var reservationId : String?
@@ -143,7 +155,9 @@ extension NSObject {
 
 
 
-
+class openClass: SubClass {
+    
+}
 
 
 
